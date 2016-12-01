@@ -2,15 +2,16 @@ h1.page-header AdminScript #{@admin_script.id}
 
 .panel.panel-default
   .panel-body
-    = form_for @admin_script, url: perform_admin_script_path(@admin_script), as: :admin_script do |f|
+    = form_for @admin_script, url: admin_script_path(@admin_script), as: :admin_script do |f|
       .form-group
         = f.label :description
         p = simple_format f.object.description
 
-      - if lookup_context.template_exists?(@admin_script.model_name.element, controller._prefixes, true)
+      - template = "admin_scripts/#{@admin_script.model_name.element}"
+      - if lookup_context.template_exists?(template, controller._prefixes, true)
         = render @admin_script.model_name.element, f: f
       - else
-        = render 'default_form', f: f
+        = render 'admin_scripts/default_form', f: f
 
       = f.button 'Perform', class: 'btn btn-default', data: { confirm: 'Are you sure?' }
 
