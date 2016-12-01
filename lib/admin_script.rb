@@ -1,5 +1,4 @@
-require "admin_script/version"
+require 'admin_script/version'
 
 module AdminScript
-  # Your code goes here...
 end
