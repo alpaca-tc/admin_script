@@ -1,4 +1,5 @@
 require 'active_support/concern'
+require 'active_model/type'
 
 module AdminScript
   # Define method to cast value
