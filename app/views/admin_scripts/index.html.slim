@@ -1,0 +1,14 @@
+h1.page-header Listing of AdminScripts
+
+table.table.table-hover
+  thead
+    tr
+      th Admin Script
+      th Description
+      th
+  tbody
+    - @admin_scripts.each do |admin_script|
+      tr
+        td = admin_script.id
+        td = simple_format admin_script.description
+        td = link_to 'Show', admin_script_path(admin_script), class: 'btn btn-default'
