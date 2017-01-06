@@ -21,6 +21,8 @@ module AdminScript
     end
 
     if defined?(ActiveModel) && ActiveModel.gem_version >= Gem::Version.new('5.0.0')
+      require 'active_model/type'
+
       def self.cast_value(cast_type, value)
         ActiveModel::Type.lookup(cast_type).cast(value)
       end
