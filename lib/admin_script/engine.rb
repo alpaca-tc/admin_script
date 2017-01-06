@@ -12,6 +12,11 @@ module AdminScript
       app.config.i18n.load_path += locale_files
     end
 
+    config.after_initialize do
+      AdminScript::Engine.routes.default_url_options = AdminScript.configuration.default_url_options.presence ||
+        Rails.application.routes.default_url_options
+    end
+
     config.to_prepare do
       AdminScript.configuration.admin_script_paths.each do |path|
         finder = Pathname.new(path).join('**', '*.rb')
