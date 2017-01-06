@@ -1,0 +1,21 @@
+ja:
+  activemodel:
+    models:
+      admin_script/base: AdminScript
+
+    attributes:
+      admin_script/base:
+        description: 詳細
+
+  admin_script:
+    admin_scripts:
+      index:
+        title: AdminScript一覧
+        open: 開く
+      edit:
+        title: 'AdminScript - %{id}'
+        perform: 実行
+        confirm: 実行してよろしいですか？
+      update:
+        successfully_performed: 実行しました
+        failed_performing: 実行できませんでした

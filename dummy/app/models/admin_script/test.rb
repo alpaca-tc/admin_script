@@ -1,7 +1,10 @@
 module AdminScript
   class Test < Base
+    self.description = <<~TEXT
+      This is an apple.
+    TEXT
+
     def save
-      Rails.logger.debug('success')
       true
     end
   end

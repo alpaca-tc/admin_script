@@ -23,7 +23,6 @@ module AdminScript
 
       def inherited(subclass)
         raise "Reserved class name given. #{subclass}" if RESERVED_CLASSE_NAMES.include?(subclass.to_s)
-
         super
 
         subclass.class_exec do
@@ -45,16 +44,16 @@ module AdminScript
         type_attributes.merge!(attrs_with_types)
       end
 
-      def id
+      def to_param
         model_name.element
       end
 
-      def find_class(id)
-        subclasses.find { |klass| klass.id == id }
+      def find_class(element)
+        subclasses.find { |klass| klass.to_param == element }
       end
 
       def script
-        instance_method(:perform!).source
+        instance_method(:save).source
       end
     end
 
@@ -64,12 +63,11 @@ module AdminScript
       end
     end
 
-    def id
-      self.class.id
+    def to_param
+      self.class.to_param
     end
-    alias to_param id
 
-    def perform!
+    def save
       raise NotImplementedError, 'not implemented'
     end
 

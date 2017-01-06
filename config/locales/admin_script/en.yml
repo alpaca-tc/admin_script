@@ -1,0 +1,21 @@
+en:
+  activemodel:
+    models:
+      admin_script/base: AdminScript
+
+    attributes:
+      admin_script/base:
+        description: Description
+
+  admin_script:
+    admin_scripts:
+      index:
+        title: Listing of AdminScripts
+        open: Open
+      edit:
+        title: 'AdminScript - %{id}'
+        perform: Perform
+        confirm: Are you sure?
+      update:
+        successfully_performed: Successfully performed
+        failed_performing: Failed performing

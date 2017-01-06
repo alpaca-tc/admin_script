@@ -19,10 +19,10 @@ module AdminScript
         # TODO: Fixes path
         default_path = admin_script.routes.url_helpers.admin_scripts_path
         location = @admin_script.location_url.presence || default_path
-        redirect_to location, notice: t('messages.success')
+        redirect_to location, notice: t('.successfully_performed')
       else
-        flash.now[:alert] = t('messages.fail')
-        render :show
+        flash.now[:alert] = t('.failed_performing')
+        render :edit, status: :unprocessable_entity
       end
     end
 
