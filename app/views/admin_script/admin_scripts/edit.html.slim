@@ -1,0 +1,21 @@
+h1.page-header AdminScript #{@admin_script.id}
+
+.panel.panel-default
+  .panel-body
+
+    - url = admin_script.routes.url_helpers.admin_script_path(@admin_script)
+    = form_for @admin_script, url: url, as: :admin_script, method: 'patch' do |f|
+      .form-group
+        = f.label :description
+        p = simple_format f.object.description
+
+      - template = "admin_scripts/#{@admin_script.model_name.element}"
+      - if lookup_context.template_exists?(template, controller._prefixes, true)
+        = render @admin_script.model_name.element, f: f
+      - else
+        = render 'admin_script/admin_scripts/default_form', f: f
+
+      = f.button 'Perform', class: 'btn btn-default', data: { confirm: 'Are you sure?' }
+
+  .panel-footer
+    pre = @admin_script.class.script
