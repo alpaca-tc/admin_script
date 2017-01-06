@@ -54,9 +54,9 @@ RSpec.describe AdminScript::Base do
       end
     end
 
-    describe '#perform!' do
+    describe '#perform' do
       subject do
-        -> { instance.perform! }
+        -> { instance.perform }
       end
 
       it { is_expected.to raise_error(NotImplementedError) }
