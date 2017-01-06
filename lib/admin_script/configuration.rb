@@ -23,5 +23,6 @@ module AdminScript
     end
 
     define_configuration(:admin_script_paths, default: [Rails.root.join('app', 'models', 'admin_script').to_s])
+    define_configuration(:parent_controller, default: 'ActionController::Base')
   end
 end

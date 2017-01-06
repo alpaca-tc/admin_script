@@ -1,5 +1,4 @@
 module AdminScript
-  # TODO: Change parent class
-  class ApplicationController < ActionController::Base
+  class ApplicationController < AdminScript.configuration.parent_controller.constantize
   end
 end
