@@ -1,5 +1,5 @@
 require 'admin_script/version'
-require 'admin_script/engine'
+require 'admin_script/engine' if defined?(Rails)
 require 'slim-rails'
 
 module AdminScript
