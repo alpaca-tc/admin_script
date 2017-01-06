@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  mount AdminScript::Engine => '/admin_scripts'
+  mount AdminScript::Engine => '/engine'
 end

@@ -13,7 +13,17 @@ module AdminScript
     attr_accessor :location_url
 
     class << self
+      RESERVED_CLASSE_NAMES = %w(
+        AdminScript::Base
+        AdminScript::Configuration
+        AdminScript::Engine
+        AdminScript::TypeAttributes
+        AdminScript::VERSION
+      ).freeze
+
       def inherited(subclass)
+        raise "Reserved class name given. #{subclass}" if RESERVED_CLASSE_NAMES.include?(subclass.to_s)
+
         super
 
         subclass.class_exec do
