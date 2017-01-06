@@ -4,7 +4,7 @@ module AdminScript
       This is an apple.
     TEXT
 
-    def save
+    def perform
       true
     end
   end

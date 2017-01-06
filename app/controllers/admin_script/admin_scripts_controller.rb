@@ -15,7 +15,7 @@ module AdminScript
     def update
       @admin_script = @admin_script_class.new(admin_script_params)
 
-      if @admin_script.save
+      if @admin_script.perform
         # TODO: Fixes path
         default_path = admin_script.routes.url_helpers.admin_scripts_path
         location = @admin_script.location_url.presence || default_path

@@ -53,7 +53,7 @@ module AdminScript
       end
 
       def script
-        instance_method(:save).source
+        instance_method(:perform).source
       end
     end
 
@@ -67,7 +67,7 @@ module AdminScript
       self.class.to_param
     end
 
-    def save
+    def perform
       raise NotImplementedError, 'not implemented'
     end
 
