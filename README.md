@@ -4,7 +4,7 @@ A module for creating flexible, simple scripts for project in Rails.
 
 <img width="1147" alt="edit_page_example" src="https://cloud.githubusercontent.com/assets/1688137/21744577/cd1d3bac-d55b-11e6-8a9d-bda96edd4d36.png">
 
-## Why use a AdminScript?
+## Why use an AdminScript?
 
 I do not want to design RESTful resource for such scripts that run only a few times a month. A new template is also a complete waste of time.
 
