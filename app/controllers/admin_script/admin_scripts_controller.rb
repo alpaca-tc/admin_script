@@ -1,7 +1,5 @@
 module AdminScript
   class AdminScriptsController < ApplicationController
-    layout 'admin_script/application'
-
     before_action :set_admin_script_class, only: [:edit, :update]
 
     def index
@@ -18,11 +16,11 @@ module AdminScript
       if @admin_script.perform
         default_path = admin_script.routes.url_helpers.admin_scripts_path
         location = @admin_script.location_url.presence || default_path
-        message = @admin_script.success_message.presence || t('.successfully_performed')
+        message = @admin_script.success_message.presence || t('admin_script.admin_scripts.update.successfully_performed')
 
         redirect_to location, notice: message
       else
-        message = @admin_script.failure_message.presence || t('.failed_performing')
+        message = @admin_script.failure_message.presence || t('admin_script.admin_scripts.update.failed_performing')
         flash.now[:alert] = message
 
         render :edit, status: :unprocessable_entity

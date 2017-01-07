@@ -12,4 +12,4 @@ table.table.table-hover
       tr
         td = instance.to_param
         td = simple_format instance.description
-        td = link_to t('.open'), edit_admin_script_path(instance), class: 'btn btn-default'
+        td = link_to t('.open'), AdminScript::Engine.routes.url_helpers.edit_admin_script_path(instance), class: 'btn btn-default'
