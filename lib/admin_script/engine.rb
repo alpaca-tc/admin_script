@@ -1,8 +1,10 @@
+require 'slim-rails'
+
 module AdminScript
   class Engine < ::Rails::Engine
     isolate_namespace AdminScript
 
-    Bootstrap.new.load!
+    AdminScript::Bootstrap.new.load!
 
     initializer 'admin_script.i18n' do |app|
       array = Array.wrap(app.config.i18n.available_locales)

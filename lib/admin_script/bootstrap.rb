@@ -1,6 +1,5 @@
 module AdminScript
   class Bootstrap
-    # Inspired by Kaminari
     def load!
       require 'bootstrap-sass'
       require 'jquery-rails'

@@ -1,5 +1,4 @@
 require 'admin_script/version'
-require 'slim-rails'
 
 module AdminScript
   autoload :Base, 'admin_script/base'
