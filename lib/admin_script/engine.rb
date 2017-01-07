@@ -2,6 +2,8 @@ module AdminScript
   class Engine < ::Rails::Engine
     isolate_namespace AdminScript
 
+    Bootstrap.new.load!
+
     initializer 'admin_script.i18n' do |app|
       array = Array.wrap(app.config.i18n.available_locales)
       available_locales = array.blank? ? '*' : "{#{array.join ','}}"
@@ -10,6 +12,10 @@ module AdminScript
       locale_files = Dir[locale_pattern]
 
       app.config.i18n.load_path += locale_files
+    end
+
+    config.assets.paths += %w(stylesheets javascripts fonts).map do |path|
+      File.expand_path("../../../vendor/#{path}", __FILE__)
     end
 
     config.after_initialize do

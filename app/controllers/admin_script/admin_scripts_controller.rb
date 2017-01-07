@@ -1,6 +1,6 @@
 module AdminScript
   class AdminScriptsController < ApplicationController
-    layout 'admin_script'
+    layout 'admin_script/application'
 
     before_action :set_admin_script_class, only: [:edit, :update]
 
