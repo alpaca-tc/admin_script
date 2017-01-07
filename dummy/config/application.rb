@@ -9,8 +9,6 @@ require 'admin_script'
 
 module Dummy
   class Application < Rails::Application
-    config.i18n.available_locales = [:ja]
-    config.i18n.default_locale = :ja
   end
 end
 
