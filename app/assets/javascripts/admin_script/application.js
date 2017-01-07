@@ -1,4 +1,5 @@
 //= require admin_script/jquery-2.2.4.min
+//= require jquery_ujs
 //= require bootstrap-sprockets
 //= require admin_script/moment-with-locales
 //= require admin_script/bootstrap-datetimepicker.min

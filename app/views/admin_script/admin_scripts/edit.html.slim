@@ -1,7 +1,7 @@
 - content_for(:title, t('.title', id: @admin_script.to_param))
 h1.page-header = yield(:title)
 
-.panel.panel-default
+.panel.panel-default style='position: relative'
   .panel-body
     - url = admin_script.admin_script_path(@admin_script)
     = form_for @admin_script, url: url, as: :admin_script, method: 'patch' do |f|
@@ -16,7 +16,6 @@ h1.page-header = yield(:title)
       - else
         = render 'admin_script/admin_scripts/default_form', f: f
 
-      / FIXME: data-confirm is not working. because this template does not load rails-ujs.
       = f.button t('.perform'), class: 'btn btn-default', data: { confirm: t('.confirm') }
 
   .panel-footer

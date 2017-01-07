@@ -3,7 +3,8 @@ module AdminScript
     # Inspired by Kaminari
     def load!
       require 'bootstrap-sass'
-      require 'sass'
+      require 'jquery-rails'
+
       ::Sass.load_paths << stylesheets_path
     end
 
@@ -13,12 +14,8 @@ module AdminScript
       File.expand_path('../..', File.dirname(__FILE__))
     end
 
-    def vendor_path
-      File.join(gem_path, 'vendor')
-    end
-
     def stylesheets_path
-      File.join(vendor_path, 'stylesheets')
+      File.join(gem_path, 'vendor', 'stylesheets')
     end
   end
 end

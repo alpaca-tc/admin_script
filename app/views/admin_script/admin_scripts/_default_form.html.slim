@@ -15,9 +15,9 @@
       - when :string
         = f.text_field name, class: 'form-control'
       - when :date
-        = f.date_field name, class: 'form-control'
+        = f.text_field name, class: 'form-control', data: { behaviour: 'datepicker' }
       - when :datetime
-        = f.datetime_select name, class: 'form-control'
+        = f.text_field name, class: 'form-control', data: { behaviour: 'datetimepicker' }
       - when :binary
         = f.file_field name, class: 'form-control'
       - when :text
