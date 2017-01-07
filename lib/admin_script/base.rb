@@ -27,14 +27,12 @@ module AdminScript
 
         subclass.class_exec do
           cattr_accessor :description
+          cattr_accessor :type_attributes
+          self.type_attributes = {}
         end
       end
 
-      def type_attributes
-        @type_attributes ||= {}
-      end
-
-      def type_attributes=(attrs_with_types)
+      def type_attr_accessor(attrs_with_types)
         attr_accessor(*attrs_with_types.keys)
 
         attrs_with_types.each do |name, type|

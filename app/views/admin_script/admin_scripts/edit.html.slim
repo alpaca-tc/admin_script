@@ -3,19 +3,20 @@ h1.page-header = yield(:title)
 
 .panel.panel-default
   .panel-body
-
-    - url = admin_script.routes.url_helpers.admin_script_path(@admin_script)
+    - url = admin_script.admin_script_path(@admin_script)
     = form_for @admin_script, url: url, as: :admin_script, method: 'patch' do |f|
       .form-group
         = f.label :description
         p = simple_format f.object.description
 
-      - template = "admin_scripts/#{@admin_script.model_name.element}"
-      - if lookup_context.template_exists?(template, controller._prefixes, true)
-        = render @admin_script.model_name.element, f: f
+      / Find custom template or default template
+      - template = @admin_script.model_name.element
+      - if lookup_context.exists?(template, lookup_context.prefixes, true)
+        = render template, f: f
       - else
         = render 'admin_script/admin_scripts/default_form', f: f
 
+      / FIXME: data-confirm is not working. because this template does not load rails-ujs.
       = f.button t('.perform'), class: 'btn btn-default', data: { confirm: t('.confirm') }
 
   .panel-footer
