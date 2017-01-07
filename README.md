@@ -6,10 +6,11 @@ A module for creating flexible, simple scripts for project in Rails.
 
 ## Why use an AdminScript?
 
-I do not want to design RESTful resource for such scripts that run only a few times a month. A new template is also a complete waste of time.
+I do not want to design RESTful resource for such scripts that run only a few times a month.   
+A new template is also a complete waste of time.
 
-Therefore, AdminScript provides management page of scripts.
-Only once to define model to perform a script, it generates template automatically.
+Therefore, AdminScript provides management page of scripts.  
+Only once to define model to perform a script, it generates template automatically.  
 No configuration of routing, controller, template and as so on needed.
 
 ## Getting Started
@@ -22,10 +23,12 @@ gem 'admin_script'
 
 Re-bundle, then run the installer:
 
-    $ bundle exec rails generate admin_script:install
+```
+$ bundle exec rails generate admin_script:install
+```
 
 AdminScript provides a rails engine that can display listing of your scripts.
-Add the following to your config/routes.rb
+Add the following to your `config/routes.rb`
 
 ```
 mount AdminScript::Engine => '/admin_scripts'
@@ -44,6 +47,10 @@ bundle exec rails generate admin_script:model awesome_script
 ## Development
 
 no doc
+
+## Links
+
+- [Wiki](https://github.com/alpaca-tc/admin_script/wiki)
 
 ## Contributing
 
