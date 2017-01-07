@@ -1,36 +1,50 @@
 # AdminScript
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/admin_script`. To experiment with that code, run `bin/console` for an interactive prompt.
+A module for creating flexible, simple scripts for project in Rails.
 
-TODO: Delete this and the text above, and describe your gem
+<img width="1147" alt="edit_page_example" src="https://cloud.githubusercontent.com/assets/1688137/21744577/cd1d3bac-d55b-11e6-8a9d-bda96edd4d36.png">
 
-## Installation
+## Why use a AdminScript?
 
-Add this line to your application's Gemfile:
+I do not want to design RESTful resource for such scripts that run only a few times a month. A new template is also a complete waste of time.
+
+Therefore, AdminScript provides management page of scripts.
+Only once to define model to perform a script, it generates template automatically.
+No configuration of routing, controller, template and as so on needed.
+
+## Getting Started
+
+Add AdminScript to your Gemfile:
 
 ```ruby
 gem 'admin_script'
 ```
 
-And then execute:
+Re-bundle, then run the installer:
 
-    $ bundle
+    $ bundle exec rails generate admin_script:install
 
-Or install it yourself as:
+AdminScript provides a rails engine that can display listing of your scripts.
+Add the following to your config/routes.rb
 
-    $ gem install admin_script
+```
+mount AdminScript::Engine => '/admin_scripts'
+```
 
-## Usage
+### Generators
 
-TODO: Write usage instructions here
+When you have AdminScript installed
+
+```
+bundle exec rails generate admin_script:model awesome_script
+```
+
+...to create the `AdminScript::AwesomeScript`.
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+no doc
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/admin_script.
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/alpaca-tc/admin_script.
