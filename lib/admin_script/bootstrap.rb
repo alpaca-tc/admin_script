@@ -1,9 +1,9 @@
+require 'sass'
+
 module AdminScript
   class Bootstrap
     def load!
-      require 'bootstrap-sass'
-      require 'jquery-rails'
-
+      require 'sass'
       ::Sass.load_paths << stylesheets_path
     end
 

@@ -22,7 +22,9 @@ module AdminScript
       @configurations = self.class.default_configurations.clone
     end
 
-    define_configuration(:admin_script_paths, default: [Rails.root.join('app', 'models', 'admin_script').to_s])
+    define_configuration(:admin_script_paths, default: [
+      (Rails.root.join('app', 'models', 'admin_script').to_s if defined?(Rails))
+    ])
     define_configuration(:parent_controller, default: 'ActionController::Base')
     define_configuration(:default_url_options, default: {})
     define_configuration(:controller_path, default: 'admin_scripts')

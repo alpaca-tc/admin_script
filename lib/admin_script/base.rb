@@ -23,7 +23,10 @@ module AdminScript
       ).freeze
 
       def inherited(subclass)
-        raise "Reserved class name given. #{subclass}" if RESERVED_CLASSE_NAMES.include?(subclass.to_s)
+        if RESERVED_CLASSE_NAMES.include?(subclass.to_s)
+          raise ArgumentError, "Reserved class name given. #{subclass}"
+        end
+
         super
 
         subclass.class_exec do

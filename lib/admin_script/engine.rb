@@ -1,4 +1,6 @@
 require 'slim-rails'
+require 'bootstrap-sass'
+require 'jquery-rails'
 
 module AdminScript
   class Engine < ::Rails::Engine
