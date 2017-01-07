@@ -7,7 +7,7 @@ module AdminScript
     extend ActiveSupport::Concern
 
     module ClassMethods
-      def type_attribute(name, cast_type)
+      def define_type_attribute_accessor(name, cast_type)
         define_method name do
           value = instance_variable_get(:"@#{name}")
           AdminScript::TypeAttributes.cast_value(cast_type, value)

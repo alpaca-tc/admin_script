@@ -28,10 +28,8 @@ RSpec.describe AdminScript::Base do
 
         self.description = 'Hello World'
 
-        type_attr_accessor(
-          hello: :string,
-          world: :integer
-        )
+        type_attribute :hello, :string
+        type_attribute :world, :integer
       end
     end
 

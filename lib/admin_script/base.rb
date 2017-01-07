@@ -33,14 +33,12 @@ module AdminScript
         end
       end
 
-      def type_attr_accessor(attrs_with_types)
-        attr_accessor(*attrs_with_types.keys)
+      def type_attribute(name, type)
+        name = name.to_sym
+        type = type.to_sym
 
-        attrs_with_types.each do |name, type|
-          type_attribute(name, type)
-        end
-
-        type_attributes.merge!(attrs_with_types)
+        define_type_attribute_accessor(name, type)
+        type_attributes.merge!(name => type)
       end
 
       def to_param
