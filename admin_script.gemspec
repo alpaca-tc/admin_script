@@ -7,19 +7,10 @@ Gem::Specification.new do |spec|
   spec.version       = AdminScript::VERSION
   spec.authors       = ['alpaca-tc']
   spec.email         = ['alpaca-tc@alpaca.tc']
+  spec.licenses    = ['MIT']
 
-  spec.summary       = %q{}
-  spec.description   = %q{}
+  spec.summary       = %q{A module for creating flexible, simple scripts for project in Rails.}
   spec.homepage      = 'https://github.com/alpaca-tc/admin_script'
-
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
-  end
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
@@ -27,9 +18,14 @@ Gem::Specification.new do |spec|
 
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'activemodel', '>= 5.0.0', '< 6.0.0'
-  spec.add_development_dependency 'bundler', "~> 1.13"
-  spec.add_development_dependency 'rake', "~> 10.0"
-  spec.add_development_dependency 'pry'
-  spec.add_development_dependency 'rspec', '~> 3.0.0'
+  spec.add_dependency 'rails', '>= 4.1.0', '< 6.0.0'
+  spec.add_dependency 'method_source', '>= 0.8.0', '< 0.10.0'
+  spec.add_dependency 'slim-rails', '>= 3.0.0', '< 5.0.0'
+  spec.add_dependency 'bootstrap-sass', '>= 3.0.0', '< 5.0.0'
+  spec.add_dependency 'sass-rails', '>= 3.2', '< 7.0.0'
+  spec.add_dependency 'jquery-rails', '>= 1.0.0', '< 6.0.0'
+  spec.add_development_dependency 'sqlite3', '~> 1.3', '>= 1.3'
+  spec.add_development_dependency 'bundler', '~> 1.13', '>= 1.13'
+  spec.add_development_dependency 'rake', '~> 10.0', '>= 10.0'
+  spec.add_development_dependency 'rspec', '~> 3.0', '>= 3.0.0'
 end

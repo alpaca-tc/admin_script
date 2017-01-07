@@ -1,0 +1,15 @@
+- content_for(:title, t('.title'))
+h1.page-header = yield(:title)
+
+table.table.table-hover
+  thead
+    tr
+      th = AdminScript::Base.model_name.human
+      th = AdminScript::Base.human_attribute_name(:description)
+      th
+  tbody
+    - @admin_scripts.each do |instance|
+      tr
+        td = instance.to_param
+        td = simple_format instance.description
+        td = link_to t('.open'), AdminScript::Engine.routes.url_helpers.edit_admin_script_path(instance), class: 'btn btn-default'

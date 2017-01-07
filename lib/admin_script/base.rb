@@ -1,5 +1,6 @@
 require 'active_support/core_ext/class/subclasses'
 require 'active_model'
+require 'method_source'
 
 module AdminScript
   class Base
@@ -13,38 +14,46 @@ module AdminScript
     attr_accessor :location_url
 
     class << self
+      RESERVED_CLASSE_NAMES = %w(
+        AdminScript::Base
+        AdminScript::Configuration
+        AdminScript::Engine
+        AdminScript::TypeAttributes
+        AdminScript::VERSION
+      ).freeze
+
       def inherited(subclass)
+        if RESERVED_CLASSE_NAMES.include?(subclass.to_s)
+          raise ArgumentError, "Reserved class name given. #{subclass}"
+        end
+
         super
 
         subclass.class_exec do
           cattr_accessor :description
+          cattr_accessor :type_attributes
+          self.type_attributes = {}
         end
       end
 
-      def type_attributes
-        @type_attributes ||= {}
+      def type_attribute(name, type)
+        name = name.to_sym
+        type = type.to_sym
+
+        define_type_attribute_accessor(name, type)
+        type_attributes.merge!(name => type)
       end
 
-      def type_attributes=(attrs_with_types)
-        attr_accessor(*attrs_with_types.keys)
-
-        attrs_with_types.each do |name, type|
-          type_attribute(name, type)
-        end
-
-        type_attributes.merge!(attrs_with_types)
-      end
-
-      def id
+      def to_param
         model_name.element
       end
 
-      def find_class(id)
-        subclasses.find { |klass| klass.id == id }
+      def find_class(element)
+        subclasses.find { |klass| klass.to_param == element }
       end
 
       def script
-        instance_method(:perform!).source
+        instance_method(:perform).source
       end
     end
 
@@ -54,14 +63,17 @@ module AdminScript
       end
     end
 
-    def id
-      self.class.id
+    def to_param
+      self.class.to_param
     end
-    alias to_param id
 
-    def perform!
-      raise NotImplementedError, 'not implemented'
+    def perform
+      raise NotImplementedError, 'not implemented yet.'
     end
+
+    def failure_message; end
+
+    def success_message; end
 
     private
 

@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    meta charset='UTF-8'
+    meta name='referrer' content='no-referrer'
+
+    = stylesheet_link_tag 'admin_script/application', media: :all
+    = javascript_include_tag 'admin_script/application'
+    = csrf_meta_tags
+
+    title = [yield(:title).presence].compact.join(' | ')
+
+  body
+    .container
+      - { notice: :success, alert: :danger }.each do |key, type|
+        - if flash[key].present?
+          div class="alert alert-#{type}"
+            p = flash[key]
+
+      = yield
