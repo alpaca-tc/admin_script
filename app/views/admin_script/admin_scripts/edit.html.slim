@@ -3,7 +3,7 @@ h1.page-header = yield(:title)
 
 .panel.panel-default style='position: relative'
   .panel-body
-    - url = admin_script.admin_script_path(@admin_script)
+    - url = admin_script_path(@admin_script)
     = form_for @admin_script, url: url, as: :admin_script, method: 'patch' do |f|
       .form-group
         = f.label :description
