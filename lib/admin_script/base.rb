@@ -1,5 +1,6 @@
 require 'active_support/core_ext/class/subclasses'
 require 'active_model'
+require 'method_source'
 
 module AdminScript
   class Base
