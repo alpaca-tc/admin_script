@@ -18,9 +18,13 @@ module AdminScript
       if @admin_script.perform
         default_path = admin_script.routes.url_helpers.admin_scripts_path
         location = @admin_script.location_url.presence || default_path
-        redirect_to location, notice: t('.successfully_performed')
+        message = @admin_script.success_message.presence || t('.successfully_performed')
+
+        redirect_to location, notice: message
       else
-        flash.now[:alert] = t('.failed_performing')
+        message = @admin_script.failure_message.presence || t('.failed_performing')
+        flash.now[:alert] = message
+
         render :edit, status: :unprocessable_entity
       end
     end

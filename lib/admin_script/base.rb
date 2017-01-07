@@ -67,8 +67,12 @@ module AdminScript
     end
 
     def perform
-      raise NotImplementedError, 'not implemented'
+      raise NotImplementedError, 'not implemented yet.'
     end
+
+    def failure_message; end
+
+    def success_message; end
 
     private
 
