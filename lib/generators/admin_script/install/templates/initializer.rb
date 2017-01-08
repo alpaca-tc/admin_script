@@ -7,5 +7,5 @@ AdminScript.configure do |config|
   #
   #   Example:
   #     class Admin::ScriptsController < AdminScript::AdminScriptsController; end
-  #     config.controller_path = 'Admin::ScriptsController'
+  #     config.controller = 'Admin::ScriptsController'
 end
