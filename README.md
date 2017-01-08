@@ -1,7 +1,7 @@
 # AdminScript
 
 [![Gem Version](https://badge.fury.io/rb/admin_script.png)](http://badge.fury.io/rb/admin\_extractor)
-[![Build Status](https://travis-ci.org/alpaca-tc/admin_script.png)](https://travis-ci.org/alpaca-tc/admin\_script)
+[![Build Status](https://travis-ci.org/alpaca-tc/admin_script.svg?branch=master)](https://travis-ci.org/alpaca-tc/admin\_script)
 
 A module for creating flexible, simple scripts for project in Rails.
 
