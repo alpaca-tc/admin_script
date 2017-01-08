@@ -1,4 +1,4 @@
-class AdminScript
+module AdminScript
   class <%= class_name %> < AdminScript::Base
     self.description = '<%= class_name %>'
 <% attributes.each do |attribute| %>
