@@ -42,7 +42,7 @@ mount AdminScript::Engine => '/admin_scripts'
 When you have AdminScript installed
 
 ```
-bundle exec rails generate admin_script:model awesome_script
+bundle exec rails generate admin_script:model awesome_script id:integer body:text
 ```
 
 ...to create the `AdminScript::AwesomeScript`.
