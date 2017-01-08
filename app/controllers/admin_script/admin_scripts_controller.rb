@@ -16,7 +16,7 @@ class ::AdminScript::AdminScriptsController < AdminScript.configuration.parent_c
     @admin_script = @admin_script_class.new(admin_script_params)
 
     if @admin_script.perform
-      default_path = admin_script.routes.url_helpers.admin_scripts_path
+      default_path = url_helpers.admin_scripts_path
       location = @admin_script.location_url.presence || default_path
       message = @admin_script.success_message.presence || t('admin_script.admin_scripts.update.successfully_performed')
 
@@ -30,6 +30,10 @@ class ::AdminScript::AdminScriptsController < AdminScript.configuration.parent_c
   end
 
   private
+
+  def url_helpers
+    ::AdminScript::Engine.routes.url_helpers
+  end
 
   def admin_script_params
     params.require(:admin_script).permit(@admin_script_class.type_attributes.keys)
