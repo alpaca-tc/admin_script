@@ -1,5 +1,3 @@
-require 'sass'
-
 module AdminScript
   class Bootstrap
     def load!
