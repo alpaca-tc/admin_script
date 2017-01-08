@@ -6,6 +6,7 @@ module AdminScript
   autoload :TypeAttributes, 'admin_script/type_attributes'
   autoload :Controller, 'admin_script/controller'
   autoload :Configuration, 'admin_script/configuration'
+  autoload :Reloader, 'admin_script/reloader'
 
   def self.configure
     yield(configuration)
