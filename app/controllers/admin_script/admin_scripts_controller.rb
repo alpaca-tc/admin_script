@@ -1,4 +1,7 @@
 class ::AdminScript::AdminScriptsController < AdminScript.configuration.parent_controller.constantize
+  # FIXME: How to check parent layout?
+  layout 'admin_script/application' unless _layout
+
   before_action :set_admin_script_class, only: [:edit, :update]
 
   def index

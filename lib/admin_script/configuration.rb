@@ -23,7 +23,7 @@ module AdminScript
     end
 
     define_configuration(:parent_controller, default: 'ActionController::Base')
+    define_configuration(:controller, default: 'AdminScript::AdminScriptsController')
     define_configuration(:default_url_options, default: {})
-    define_configuration(:controller_path, default: 'admin_scripts')
   end
 end

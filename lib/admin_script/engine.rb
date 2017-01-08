@@ -25,10 +25,13 @@ module AdminScript
         reloader.execute_if_updated
       end
 
+      # Execute reloader at the first
+      reloader.execute
+
       app.reloaders << reloader
     end
 
-    config.assets.paths += %w(stylesheets javascripts fonts).map do |path|
+    config.assets.paths += %w(stylesheets javascripts).map do |path|
       File.expand_path("../../../vendor/#{path}", __FILE__)
     end
 
