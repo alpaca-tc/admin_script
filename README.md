@@ -14,7 +14,7 @@ A new template is also a complete waste of time.
 
 Therefore, AdminScript provides management page of scripts.  
 Only once to define model to perform a script, it generates template automatically.  
-No configuration of routing, controller, template and as so on needed.
+No configuration of routing, controller and template.
 
 ## Getting Started
 
