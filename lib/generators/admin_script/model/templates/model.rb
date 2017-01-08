@@ -1,10 +1,12 @@
 class AdminScript
   class <%= class_name %> < AdminScript::Base
     self.description = '<%= class_name %>'
-
-    type_attribute :id, :integer
-
-    validates :id, presence: true
+<% attributes.each do |attribute| %>
+    type_attribute :<%= attribute.name %>, :<%= attribute.type || 'string' -%>
+<% end %>
+<% if attributes.present? -%>
+    validates <%= attributes.map { |attr| ":#{attr.name}" }.join(', ') %>, presence: true
+<% end -%>
 
     def perform
       return false unless valid?

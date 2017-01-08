@@ -7,7 +7,6 @@ module AdminScript
       desc 'AdminScript view generator'
 
       def install
-        # FIXME: Improve default template
         template 'view.html.slim', "app/views/admin_script/admin_scripts/_#{file_path.tr('/', '_')}.rb"
       end
     end
