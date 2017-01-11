@@ -11,7 +11,7 @@ module AdminScript
 
     define_model_callbacks :initialize, only: :after
 
-    attr_accessor :location_url
+    attr_accessor :location_url, :failure_message, :success_message
 
     class << self
       RESERVED_CLASSE_NAMES = %w(
@@ -70,10 +70,6 @@ module AdminScript
     def perform
       raise NotImplementedError, 'not implemented yet.'
     end
-
-    def failure_message; end
-
-    def success_message; end
 
     private
 
