@@ -63,6 +63,10 @@ module AdminScript
       end
     end
 
+    def persisted?
+      true
+    end
+
     def to_param
       self.class.to_param
     end
