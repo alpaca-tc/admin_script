@@ -87,6 +87,12 @@ RSpec.describe AdminScript::Base do
       it { is_expected.to eq('inherited') }
     end
 
+    describe '#persisted' do
+      it 'always returns true' do
+        is_expected.to be_persisted
+      end
+    end
+
     describe '#perform' do
       subject do
         -> { instance.perform }
