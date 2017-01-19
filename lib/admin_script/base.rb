@@ -1,10 +1,11 @@
 require 'active_support/core_ext/class/subclasses'
 require 'active_model'
+require 'type_attributes'
 require 'method_source'
 
 module AdminScript
   class Base
-    include AdminScript::TypeAttributes
+    include TypeAttributes
     include ActiveModel::Model
     include ActiveModel::Validations::Callbacks
     extend ActiveModel::Callbacks
@@ -18,7 +19,6 @@ module AdminScript
         AdminScript::Base
         AdminScript::Configuration
         AdminScript::Engine
-        AdminScript::TypeAttributes
         AdminScript::VERSION
       ).freeze
 
@@ -40,7 +40,7 @@ module AdminScript
         name = name.to_sym
         type = type.to_sym
 
-        define_type_attribute_accessor(name, type)
+        super(name, type) # Define `#name=` and `#name` methods to typecast value
         type_attributes.merge!(name => type)
       end
 

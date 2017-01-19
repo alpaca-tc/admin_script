@@ -47,6 +47,42 @@ RSpec.describe AdminScript::Base do
         expect(inherited.new.key).to be_nil
         expect(inherited.new(key: '1').key).to eq(1)
       end
+
+      let(:types) do
+        {
+          big_integer: ['1', 1],
+          binary: ['1', '1'],
+          boolean: ['1', true],
+          date: ['2016-01-01', Date.parse('2016-01-01')],
+          datetime: ['2016-01-01', DateTime.parse('2016-01-01')],
+          decimal: ['1', 1],
+          float: ['1', 1.0],
+          integer: ['1', 1],
+          string: ['1', '1'],
+          text: ['1', '1'],
+          time: ['2000/01/01 00:00:00', Time.parse('2000-01-01 00:00:00 UTC')],
+        }
+      end
+
+      let(:klass) do
+        Class.new(AdminScript::Base).tap do |klass_value|
+          klass_value.instance_exec(types) do |type_with_value|
+            type_with_value.keys.each do |type|
+              type_attribute(type, type)
+            end
+          end
+        end
+      end
+
+      let(:instance) { klass.new }
+
+      it 'cast value to type' do
+        types.each do |key, (from, to)|
+          expect(instance.public_send(key)).to be_nil
+          instance.public_send("#{key}=", from)
+          expect(instance.public_send(key)).to eq(to)
+        end
+      end
     end
 
     describe '.to_param' do
