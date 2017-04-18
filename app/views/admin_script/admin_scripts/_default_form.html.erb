@@ -1,0 +1,31 @@
+<% f.object.class.type_attributes.each do |name, type| %>
+  <div class='form-group'>
+    <% if type == :boolean %>
+      <div class='checkbox'>
+        <%= f.label name, class: 'form-label' %>
+          <%= f.check_box name %>
+          <%= name %>
+      </div>
+    <% else %>
+      <%= f.label name %>
+      <% case type %>
+      <% when :integer, :big_integer %>
+        <%= f.number_field name, class: 'form-control' %>
+      <% when :float, :decimal %>
+        <%= f.number_field name, step: 0.01, class: 'form-control' %>
+      <% when :string %>
+        <%= f.text_field name, class: 'form-control' %>
+      <% when :date %>
+        <%= f.text_field name, class: 'form-control', data: { behaviour: 'datepicker' } %>
+      <% when :datetime %>
+        <%= f.text_field name, class: 'form-control', data: { behaviour: 'datetimepicker' } %>
+      <% when :binary %>
+        <%= f.file_field name, class: 'form-control' %>
+      <% when :text %>
+        <%= f.text_field name, class: 'form-control' %>
+      <% when :time %>
+        <%= f.time_select name, class: 'form-control' %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
