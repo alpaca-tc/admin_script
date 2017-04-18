@@ -20,7 +20,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'rails', '>= 4.1.0', '< 6.0.0'
   spec.add_dependency 'method_source', '>= 0.8.0', '< 0.10.0'
-  spec.add_dependency 'slim-rails', '>= 3.0.0', '< 5.0.0'
   spec.add_dependency 'bootstrap-sass', '>= 3.0.0', '< 5.0.0'
   spec.add_dependency 'sass-rails', '>= 3.2', '< 7.0.0'
   spec.add_dependency 'jquery-rails', '>= 1.0.0', '< 6.0.0'

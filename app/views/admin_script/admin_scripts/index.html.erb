@@ -1,0 +1,21 @@
+<% content_for(:title, t('.title')) %>
+<h1 class='page-header'><%= yield(:title) %></h1>
+
+<table class='table table-hover'>
+  <thead>
+    <tr>
+      <th><%= AdminScript::Base.model_name.human %></th>
+      <th><%= AdminScript::Base.human_attribute_name(:description) %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @admin_scripts.each do |instance| %>
+      <tr>
+        <td><%= instance.to_param %></td>
+        <td><%= simple_format instance.description %></td>
+        <td><%= link_to t('.open'), AdminScript::Engine.routes.url_helpers.edit_admin_script_path(instance), class: 'btn btn-default' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

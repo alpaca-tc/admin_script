@@ -1,4 +1,3 @@
-require 'slim-rails'
 require 'bootstrap-sass'
 require 'jquery-rails'
 

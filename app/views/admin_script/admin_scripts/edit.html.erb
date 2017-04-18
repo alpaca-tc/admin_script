@@ -1,0 +1,28 @@
+<% content_for(:title, t('.title', id: @admin_script.to_param)) %>
+<h1 class='page-header'><%= yield(:title) %></h1>
+
+<div class='panel panel-default' style='position: relative'>
+  <div class='panel-body'>
+    <% url = AdminScript::Engine.routes.url_helpers.admin_script_path(@admin_script) %>
+    <%= form_for @admin_script, url: url, as: :admin_script, method: 'patch' do |f| %>
+      <div class='form-group'>
+        <%= f.label :description %>
+        <p><%= simple_format f.object.description %></p>
+      </div>
+
+      <%# Find custom template or default template %>
+      <% template = @admin_script.model_name.element %>
+      <% if lookup_context.exists?(template, lookup_context.prefixes, true) %>
+        <%= render template, f: f %>
+      <% else %>
+        <%= render 'admin_script/admin_scripts/default_form', f: f %>
+      <% end %>
+
+      <%= f.button t('.perform'), class: 'btn btn-default', data: { confirm: t('.confirm') } %>
+    <% end %>
+  </div>
+
+  <div class='panel-footer'>
+    <pre><%= @admin_script.class.script %></pre>
+  </div>
+</div>
