@@ -60,7 +60,6 @@ RSpec.describe AdminScript::Base do
           float: ['1', 1.0],
           integer: ['1', 1],
           string: ['1', '1'],
-          text: ['1', '1'],
           time: ['2000/01/01 00:00:00', Time.parse('2000-01-01 00:00:00 UTC')],
         }
       end
