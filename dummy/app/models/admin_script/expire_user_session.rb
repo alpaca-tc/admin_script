@@ -4,7 +4,7 @@ module AdminScript
 
     # Define type attribute to cast user input.
     # the following defines `#id` and `#id=` as typecast method.
-    type_attribute :id, :integer
+    attribute :id, :integer
 
     attr_reader :user
 
