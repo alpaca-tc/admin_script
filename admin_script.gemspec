@@ -20,9 +20,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'rails', '>= 5.2.0.beta2', '< 6.0.0'
   spec.add_dependency 'method_source', '>= 0.8.0', '< 0.10.0'
-  spec.add_dependency 'bootstrap-sass', '>= 3.0.0', '< 5.0.0'
-  spec.add_dependency 'sass-rails', '>= 3.2', '< 7.0.0'
-  spec.add_dependency 'jquery-rails', '>= 1.0.0', '< 6.0.0'
   spec.add_development_dependency 'sqlite3', '~> 1.3', '>= 1.3'
   spec.add_development_dependency 'bundler', '~> 1.13', '>= 1.13'
   spec.add_development_dependency 'rake', '~> 10.0', '>= 10.0'
