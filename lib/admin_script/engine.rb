@@ -1,11 +1,6 @@
-require 'bootstrap-sass'
-require 'jquery-rails'
-
 module AdminScript
   class Engine < ::Rails::Engine
     isolate_namespace AdminScript
-
-    AdminScript::Bootstrap.new.load!
 
     initializer 'admin_script.i18n' do |app|
       app.config.i18n.load_path += gem_locale_files(app)
@@ -28,10 +23,6 @@ module AdminScript
       reloader.execute
 
       app.reloaders << reloader
-    end
-
-    config.assets.paths += %w(stylesheets javascripts).map do |path|
-      File.expand_path("../../../vendor/#{path}", __FILE__)
     end
 
     config.after_initialize do
