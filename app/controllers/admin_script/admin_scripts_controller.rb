@@ -36,7 +36,7 @@ class ::AdminScript::AdminScriptsController < AdminScript.configuration.parent_c
   end
 
   def admin_script_params
-    params.require(:admin_script).permit(@admin_script_class.type_attributes.keys)
+    params.require(:admin_script).permit(@admin_script_class.attribute_types.keys)
   rescue ActionController::ParameterMissing
     nil
   end

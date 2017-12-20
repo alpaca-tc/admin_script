@@ -2,7 +2,7 @@ module AdminScript
   class <%= class_name %> < AdminScript::Base
     self.description = '<%= class_name %>'
 <% attributes.each do |attribute| %>
-    type_attribute :<%= attribute.name %>, :<%= attribute.type || 'string' -%>
+    attribute :<%= attribute.name %>, :<%= attribute.type || 'string' -%>
 <% end %>
 <% if attributes.present? -%>
     validates <%= attributes.map { |attr| ":#{attr.name}" }.join(', ') %>, presence: true
