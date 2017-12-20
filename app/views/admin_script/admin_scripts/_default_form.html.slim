@@ -20,7 +20,5 @@
         = f.text_field name, class: 'form-control', data: { behaviour: 'datetimepicker' }
       - when :binary
         = f.file_field name, class: 'form-control'
-      - when :text
-        = f.text_field name, class: 'form-control'
       - when :time
         = f.time_select name, class: 'form-control'
