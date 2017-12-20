@@ -7,6 +7,28 @@ A module that creates flexible, simple scripts for Rails project.
 
 <img width="1147" alt="edit_page_example" src="https://cloud.githubusercontent.com/assets/1688137/21744577/cd1d3bac-d55b-11e6-8a9d-bda96edd4d36.png">
 
+## How to Upgrade to v1.0.0
+
+The AdminScript 1.0.0 is out.
+I removed [type_attributes](https://github.com/alpaca-tc/type_attributes) from dependencies because [`ActiveModel::Attributes`](https://github.com/rails/rails/blob/master/activemodel/lib/active_model/attributes.rb) support type cast.
+
+- The `type_attribute` method is removed.
+  - Please replace method name from `type_attribute` to `attribute`
+- :text type is removed in Rails5.
+  - Please replace the type from `:text` to `:string`
+
+```
+class AdminScript::AwesomeScript < AdminScript::Base
+  type_attribute :id, :integer
+  type_attribute :body, :text
+end
+
+class AdminScript::AwesomeScript < AdminScript::Base
+  attribute :id, :integer
+  type_attribute :body, :string
+end
+```
+
 ## Why use AdminScript?
 
 Sometimes we add a button to admin panel to run automated script, but I do not want to design RESTful resource and create new template for such scripts.   
@@ -42,7 +64,7 @@ mount AdminScript::Engine => '/admin_scripts'
 When you have AdminScript installed, you can run...
 
 ```
-bundle exec rails generate admin_script:model awesome_script id:integer body:text
+bundle exec rails generate admin_script:model awesome_script id:integer body:string
 ```
 
 ...to create the `AdminScript::AwesomeScript`.
@@ -53,7 +75,7 @@ bundle exec rails generate admin_script:model awesome_script id:integer body:tex
 # app/models/admin_script/awesome_script.rb
 class AdminScript::AwesomeScript < AdminScript::Base
   # Define attribute name and type
-  type_attribute :id, :integer
+  attribute :id, :integer
 
   def perform
     return false unless valid?

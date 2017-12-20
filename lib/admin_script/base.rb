@@ -1,12 +1,11 @@
 require 'active_support/core_ext/class/subclasses'
 require 'active_model'
-require 'type_attributes'
 require 'method_source'
 
 module AdminScript
   class Base
-    include TypeAttributes
     include ActiveModel::Model
+    include ActiveModel::Attributes
     include ActiveModel::Validations::Callbacks
     extend ActiveModel::Callbacks
 
@@ -31,17 +30,7 @@ module AdminScript
 
         subclass.class_exec do
           cattr_accessor :description
-          cattr_accessor :type_attributes
-          self.type_attributes = {}
         end
-      end
-
-      def type_attribute(name, type)
-        name = name.to_sym
-        type = type.to_sym
-
-        super(name, type) # Define `#name=` and `#name` methods to typecast value
-        type_attributes.merge!(name => type)
       end
 
       def to_param

@@ -26,7 +26,7 @@ RSpec.describe AdminScript::Base do
 
         expect {
           instance.description
-          instance.type_attributes
+          instance.attribute_types
         }.to_not raise_error
       end
 
@@ -41,9 +41,10 @@ RSpec.describe AdminScript::Base do
       end
     end
 
-    describe '.type_attribute' do
+    # ActiveModel::Attributes.attribute
+    describe '.attribute' do
       it 'defines type castor' do
-        inherited.type_attribute(:key, :integer)
+        inherited.attribute(:key, :integer)
         expect(inherited.new.key).to be_nil
         expect(inherited.new(key: '1').key).to eq(1)
       end
@@ -59,7 +60,6 @@ RSpec.describe AdminScript::Base do
           float: ['1', 1.0],
           integer: ['1', 1],
           string: ['1', '1'],
-          text: ['1', '1'],
           time: ['2000/01/01 00:00:00', Time.parse('2000-01-01 00:00:00 UTC')],
         }
       end
@@ -68,7 +68,7 @@ RSpec.describe AdminScript::Base do
         Class.new(AdminScript::Base).tap do |klass_value|
           klass_value.instance_exec(types) do |type_with_value|
             type_with_value.keys.each do |type|
-              type_attribute(type, type)
+              attribute(type, type)
             end
           end
         end

@@ -3,7 +3,7 @@ RSpec.describe AdminScript do
     subject { described_class::VERSION }
 
     it 'returns current version' do
-      is_expected.to match(/^\d+\.\d+\.\d+$/)
+      is_expected.to match(/^\d+\.\d+\.\d+(\.\w*)?$/)
     end
   end
 end
