@@ -10,6 +10,7 @@
     "webpack": "^3.10.0"
   },
   "dependencies": {
-    "bulma": "^0.6.1"
+    "bulma": "^0.6.1",
+    "pikaday": "^1.7.0"
   }
 }
