@@ -94,7 +94,12 @@ end
 
 ## Development
 
-no doc
+```sh
+# Compile assets
+
+$ yarn install
+$ ./node_modules/.bin/webpack
+```
 
 ## Links
 
