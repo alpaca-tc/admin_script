@@ -1,22 +1,20 @@
 - content_for(:title, t('.title', id: @admin_script.to_param))
-h1.page-header = yield(:title)
-
-.panel.panel-default style='position: relative'
-  .panel-body
-    - url = AdminScript::Engine.routes.url_helpers.admin_script_path(@admin_script)
-    = form_for @admin_script, url: url, as: :admin_script, method: 'patch' do |f|
-      .form-group
-        = f.label :description
-        p = simple_format f.object.description
-
-      / Find custom template or default template
-      - template = @admin_script.model_name.element
-      - if lookup_context.exists?(template, lookup_context.prefixes, true)
-        = render template, f: f
-      - else
-        = render 'admin_script/admin_scripts/default_form', f: f
-
-      = f.button t('.perform'), class: 'btn btn-default', data: { confirm: t('.confirm') }
-
-  .panel-footer
-    pre = @admin_script.class.script
+- url = AdminScript::Engine.routes.url_helpers.admin_script_path(@admin_script)
+= form_for @admin_script, url: url, as: :admin_script, method: 'patch', class: 'box' do |f|
+  section.hero
+    .hero-body
+      .container
+        h1.title
+          = yield(:title)
+        = simple_format f.object.description, { class: 'subtitle' }
+  .box
+    - template = @admin_script.model_name.element
+    - if lookup_context.exists?(template, lookup_context.prefixes, true)
+      = render template, f: f
+    - else
+      = render 'admin_script/admin_scripts/default_form', f: f
+    .field
+      .control
+        = f.button t('.perform'), class: 'button is-primary', data: { confirm: t('.confirm') }
+  .box
+    pre= @admin_script.class.script

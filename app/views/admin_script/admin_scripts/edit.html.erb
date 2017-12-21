@@ -1,28 +1,36 @@
 <% content_for(:title, t('.title', id: @admin_script.to_param)) %>
-<h1 class='page-header'><%= yield(:title) %></h1>
 
-<div class='panel panel-default' style='position: relative'>
-  <div class='panel-body'>
-    <% url = AdminScript::Engine.routes.url_helpers.admin_script_path(@admin_script) %>
-    <%= form_for @admin_script, url: url, as: :admin_script, method: 'patch' do |f| %>
-      <div class='form-group'>
-        <%= f.label :description %>
-        <p><%= simple_format f.object.description %></p>
+<% url = AdminScript::Engine.routes.url_helpers.admin_script_path(@admin_script) %>
+<%= form_for @admin_script, url: url, as: :admin_script, method: 'patch', class: 'box' do |f| %>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          <%= yield(:title) %>
+        </h1>
+
+        <%= simple_format f.object.description, { class: 'subtitle' } %>
       </div>
+    </div>
+  </section>
 
-      <%# Find custom template or default template %>
-      <% template = @admin_script.model_name.element %>
-      <% if lookup_context.exists?(template, lookup_context.prefixes, true) %>
-        <%= render template, f: f %>
-      <% else %>
-        <%= render 'admin_script/admin_scripts/default_form', f: f %>
-      <% end %>
-
-      <%= f.button t('.perform'), class: 'btn btn-default', data: { confirm: t('.confirm') } %>
+  <div class='box'>
+    <%# Find custom template or default template %>
+    <% template = @admin_script.model_name.element %>
+    <% if lookup_context.exists?(template, lookup_context.prefixes, true) %>
+      <%= render template, f: f %>
+    <% else %>
+      <%= render 'admin_script/admin_scripts/default_form', f: f %>
     <% end %>
+
+    <div class="field">
+      <div class="control">
+        <%= f.button t('.perform'), class: 'button is-primary', data: { confirm: t('.confirm') } %>
+      </div>
+    </div>
   </div>
 
-  <div class='panel-footer'>
+  <div class='box'>
     <pre><%= @admin_script.class.script %></pre>
   </div>
-</div>
+<% end %>
