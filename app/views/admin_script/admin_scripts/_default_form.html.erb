@@ -2,11 +2,10 @@
   <div class="field">
     <div class="control">
       <% if type_class.type == :boolean %>
-        <div class='checkbox'>
-          <%= f.label name, class: 'label' %>
-            <%= f.check_box name %>
-            <%= name %>
-        </div>
+        <%= f.label name, class: 'checkbox' do %>
+          <%= f.check_box name %>
+          <%= name %>
+        <% end %>
       <% else %>
         <%= f.label name, class: 'label' %>
 

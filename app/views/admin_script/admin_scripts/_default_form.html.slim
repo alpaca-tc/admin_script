@@ -2,8 +2,7 @@
   .field
     .control
       - if type_class.type == :boolean
-        .checkbox
-          = f.label name, class: 'label'
+        = f.label name, class: 'checkbox' do
           = f.check_box name
           = name
       - else
