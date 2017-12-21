@@ -1,7 +1,16 @@
 <% content_for(:title, t('.title')) %>
-<h1 class='page-header'><%= yield(:title) %></h1>
 
-<table class='table table-hover'>
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        <%= yield(:title) %>
+      </h1>
+    </div>
+  </div>
+</section>
+
+<table>
   <thead>
     <tr>
       <th><%= AdminScript::Base.model_name.human %></th>
@@ -14,7 +23,7 @@
       <tr>
         <td><%= instance.to_param %></td>
         <td><%= simple_format instance.description %></td>
-        <td><%= link_to t('.open'), AdminScript::Engine.routes.url_helpers.edit_admin_script_path(instance), class: 'btn btn-default' %></td>
+        <td><%= link_to t('.open'), AdminScript::Engine.routes.url_helpers.edit_admin_script_path(instance), class: 'button' %></td>
       </tr>
     <% end %>
   </tbody>

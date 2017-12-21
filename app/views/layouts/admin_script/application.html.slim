@@ -1,20 +1,21 @@
 doctype html
 html
   head
-    meta charset='UTF-8'
-    meta name='referrer' content='no-referrer'
-
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type"
+    meta charset="UTF-8"
+    meta content="no-referrer" name="referrer"
+    meta content="width=device-width, initial-scale=1" name="viewport"
+    link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
     = stylesheet_link_tag 'admin_script/application', media: :all
     = javascript_include_tag 'admin_script/application'
     = csrf_meta_tags
-
-    title = [yield(:title).presence].compact.join(' | ')
-
+    title= [yield(:title).presence].compact.join(' | ')
   body
-    .container
-      - { notice: :success, alert: :danger }.each do |key, type|
-        - if flash[key].present?
-          div class="alert alert-#{type}"
-            p = flash[key]
-
-      = yield
+    section.section
+      .container.is-widescreen
+        - { notice: 'is-success', alert: 'is-warning' }.each do |key, type|
+          - if flash[key].present?
+            div class=("notification #{type}")
+              = flash[key]
+        .content
+          = yield

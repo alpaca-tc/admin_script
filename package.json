@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "style-loader": "^0.19.1",
+    "webpack": "^3.10.0"
+  },
+  "dependencies": {
+    "bulma": "^0.6.1",
+    "pikaday": "^1.7.0"
+  }
+}
