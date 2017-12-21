@@ -1,5 +1,10 @@
 {
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
     "webpack": "^3.10.0"
-  }
+  },
+  "dependencies": {}
 }
