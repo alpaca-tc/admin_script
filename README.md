@@ -25,7 +25,7 @@ end
 
 class AdminScript::AwesomeScript < AdminScript::Base
   attribute :id, :integer
-  type_attribute :body, :string
+  attribute :body, :string
 end
 ```
 
