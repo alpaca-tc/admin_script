@@ -8,6 +8,8 @@
   },
   "dependencies": {
     "bulma": "^0.6.1",
-    "pikaday": "^1.7.0"
+    "pikaday-time": "^1.6.1",
+    "rails-ujs": "^5.1.4",
+    "turbolinks": "^5.1.1"
   }
 }
