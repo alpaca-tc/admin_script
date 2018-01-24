@@ -27,7 +27,7 @@ module.exports = {
     modules: ['node_modules']
   },
   plugins: [
-    // new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.UglifyJsPlugin(),
     new ExtractTextPlugin('stylesheets/admin_script/[name].css')
   ],
 };

@@ -2,7 +2,11 @@ module AdminScript
   class <%= class_name %> < AdminScript::Base
     self.description = '<%= class_name %>'
 <% attributes.each do |attribute| %>
+  <% if attribute.type %>
     attribute :<%= attribute.name %>, :<%= attribute.type || 'string' -%>
+  <% else %>
+    attribute :<%= attribute.name %> -%>
+  <% end %>
 <% end %>
 <% if attributes.present? -%>
     validates <%= attributes.map { |attr| ":#{attr.name}" }.join(', ') %>, presence: true
@@ -22,7 +26,7 @@ module AdminScript
     # # Display success_message if successfully performed.
     # def success_message; end
     #
-    # # Display failure_message if failued to performing.
+    # # Display failure_message if failued performing.
     # def failure_message; end
   end
 end

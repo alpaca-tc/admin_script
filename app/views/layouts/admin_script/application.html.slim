@@ -17,5 +17,4 @@ html
           - if flash[key].present?
             div class=("notification #{type}")
               = flash[key]
-        .content
-          = yield
+        = yield

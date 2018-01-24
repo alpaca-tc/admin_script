@@ -16,6 +16,7 @@ ja:
         title: 'AdminScript - %{id}'
         perform: 実行
         confirm: 実行してよろしいですか？
+        choose_file: ファイルを選択
       update:
         successfully_performed: 実行しました
         failed_performing: 実行できませんでした

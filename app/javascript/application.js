@@ -9,7 +9,7 @@ import Pikaday from 'pikaday-time';
 Turbolinks.start();
 Rails.start();
 
-function datepicker(element) {
+function datepicker (element) {
   new Pikaday({
     showTime: false,
     use24hour: false,
@@ -18,7 +18,7 @@ function datepicker(element) {
   });
 }
 
-function datetimepicker(element) {
+function datetimepicker (element) {
   new Pikaday({
     showTime: true,
     showSeconds: true,
@@ -28,12 +28,30 @@ function datetimepicker(element) {
   });
 }
 
+const extractFileName = function (target) {
+  var file = target.files[0];
+
+  if (file) {
+    return file.name;
+  } else {
+    return '';
+  }
+};
+
 document.addEventListener('turbolinks:load', function() {
-  Rails.$('[data-behaviour~=datepicker]').forEach(function(element) {
+  Rails.$('.js-datepicker').forEach(function(element) {
     datepicker(element);
   });
 
-  Rails.$('[data-behaviour~=datetimepicker]').forEach(function(element) {
+  Rails.$('.js-datetimepicker').forEach(function(element) {
     datetimepicker(element);
+  });
+
+  Rails.$('.js-file-field').forEach(function(element) {
+    Rails.delegate(element, '.js-file-field-input', 'change', function(event) {
+      var fileName = extractFileName(event.target);
+      var fileNameElement = event.currentTarget.getElementsByClassName('file-name')[0];
+      fileNameElement.innerText = fileName;
+    });
   });
 });

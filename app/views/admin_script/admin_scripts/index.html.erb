@@ -1,30 +1,26 @@
 <% content_for(:title, t('.title')) %>
 
-<section class="hero">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-        <%= yield(:title) %>
-      </h1>
-    </div>
-  </div>
-</section>
+<h1 class="title">
+  <%= yield(:title) %>
+</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th><%= AdminScript::Base.model_name.human %></th>
-      <th><%= AdminScript::Base.human_attribute_name(:description) %></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @admin_scripts.each do |instance| %>
+<div class="content">
+  <table>
+    <thead>
       <tr>
-        <td><%= instance.to_param %></td>
-        <td><%= simple_format instance.description %></td>
-        <td><%= link_to t('.open'), AdminScript::Engine.routes.url_helpers.edit_admin_script_path(instance), class: 'button' %></td>
+        <th><%= AdminScript::Base.model_name.human %></th>
+        <th><%= AdminScript::Base.human_attribute_name(:description) %></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @admin_scripts.each do |instance| %>
+        <tr>
+          <td><%= instance.to_param %></td>
+          <td><%= simple_format instance.description %></td>
+          <td><%= link_to t('.open'), AdminScript::Engine.routes.url_helpers.edit_admin_script_path(instance), class: 'button' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
