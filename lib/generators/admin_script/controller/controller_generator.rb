@@ -13,7 +13,7 @@ module AdminScript
 
         inject_into_file 'config/initializers/admin_script.rb', after: "AdminScript.configure do |config|" do <<-RUBY
 
-  config.controller = '#{class_name}'
+  config.controller = '#{class_name}Controller'
         RUBY
        end
       end
