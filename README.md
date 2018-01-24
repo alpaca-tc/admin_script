@@ -5,7 +5,7 @@
 
 A module that creates flexible, simple scripts for Rails project.
 
-<img width="1147" alt="edit_page_example" src="https://cloud.githubusercontent.com/assets/1688137/21744577/cd1d3bac-d55b-11e6-8a9d-bda96edd4d36.png">
+[preview](https://user-images.githubusercontent.com/1688137/35339470-120b2fdc-0164-11e8-840d-57ec9f55c47f.png)
 
 ## How to Upgrade to v1.0.0
 
