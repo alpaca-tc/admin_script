@@ -15,10 +15,16 @@
         - when :string
           = f.text_field name, class: 'input'
         - when :date
-          = f.text_field name, class: 'input', data: { behaviour: 'datepicker' }
+          = f.text_field name, class: 'input js-datepicker'
         - when :datetime
-          = f.text_field name, class: 'input', data: { behaviour: 'datetimepicker' }
-        - when :binary
-          = f.file_field name, class: 'input'
+          = f.text_field name, class: 'input js-datetimepicker'
         - when :time
           = f.time_select name, class: 'input'
+        - when :binary
+          .file.has-name.js-file-field
+            label.file-label
+              = f.file_field name, class: 'file-input js-file-field-input'
+              span.file-cta
+                span.file-label.js-file-field-label
+                  = t('.choose_file')
+              span.file-name

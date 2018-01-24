@@ -16,6 +16,7 @@ en:
         title: 'AdminScript - %{id}'
         perform: Perform
         confirm: Are you sure?
+        choose_file: Choose a file
       update:
         successfully_performed: Successfully performed
         failed_performing: Failed performing

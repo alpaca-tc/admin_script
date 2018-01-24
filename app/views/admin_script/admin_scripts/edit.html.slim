@@ -1,12 +1,15 @@
 - content_for(:title, t('.title', id: @admin_script.to_param))
+h1.title
+  = yield(:title)
+= simple_format @admin_script.description, { class: 'subtitle' }, wrapper_tag: 'h2'
 - url = AdminScript::Engine.routes.url_helpers.admin_script_path(@admin_script)
 = form_for @admin_script, url: url, as: :admin_script, method: 'patch', class: 'box' do |f|
-  section.hero
-    .hero-body
-      .container
-        h1.title
-          = yield(:title)
-        = simple_format f.object.description, { class: 'subtitle' }
+  nav.breadcrumb aria-label="breadcrumbs"
+    ul
+      li
+        = link_to AdminScript::Base.model_name.human, AdminScript::Engine.routes.url_helpers.admin_scripts_path
+      li.is-active
+        = link_to f.object.description, AdminScript::Engine.routes.url_helpers.edit_admin_script_path(@admin_script)
   .box
     - template = @admin_script.model_name.element
     - if lookup_context.exists?(template, lookup_context.prefixes, true)
