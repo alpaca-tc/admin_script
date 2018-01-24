@@ -9,10 +9,17 @@ module AdminScript
     initializer 'admin_script.load_subclasses', before: :set_clear_dependencies_hook do |app|
       path = app.paths['app/models'].first
 
-      reloader = AdminScript::Reloader.file_watcher.new([], { "#{path}/admin_script" => [:rb] }) do
+      reload_scrpits = -> {
         Dir["#{path}/admin_script/**/*.rb"].each do |full_path|
-          load(full_path)
+          require_dependency(full_path)
         end
+      }
+
+      reloader = AdminScript::Reloader.file_watcher.new([], { "#{path}/admin_script" => [:rb] }) do
+        ActiveSupport::DescendantsTracker.clear
+        ActiveSupport::Dependencies.clear
+
+        reload_scrpits.call
       end
 
       config.to_prepare do
@@ -20,7 +27,7 @@ module AdminScript
       end
 
       # Execute reloader at the first
-      reloader.execute
+      reload_scrpits.call
 
       app.reloaders << reloader
     end
