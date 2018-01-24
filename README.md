@@ -10,7 +10,7 @@ A module that creates flexible, simple scripts for Rails project.
 ## How to Upgrade to v1.0.0
 
 The AdminScript 1.0.0 is out.
-I removed [type_attributes](https://github.com/alpaca-tc/type_attributes) from dependencies because [`ActiveModel::Attributes`](https://github.com/rails/rails/blob/master/activemodel/lib/active_model/attributes.rb) support type cast.
+I removed [type_attributes](https://github.com/alpaca-tc/type_attributes) from dependencies.
 
 - The `type_attribute` method is removed.
   - Please replace method name from `type_attribute` to `attribute`
@@ -19,13 +19,9 @@ I removed [type_attributes](https://github.com/alpaca-tc/type_attributes) from d
 
 ```
 class AdminScript::AwesomeScript < AdminScript::Base
-  type_attribute :id, :integer
-  type_attribute :body, :text
-end
-
-class AdminScript::AwesomeScript < AdminScript::Base
   attribute :id, :integer
-  attribute :body, :string
+  attribute :user
+  attribute :body, :text
 end
 ```
 
