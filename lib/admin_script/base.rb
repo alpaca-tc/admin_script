@@ -7,7 +7,7 @@ module AdminScript
     include ActiveModel::Model
     include ActiveModel::Validations::Callbacks
 
-    if ActiveModel.gem_version < Gem::Version.create('5.2.0.beta2')
+    if ActiveModel.gem_version < Gem::Version.create('5.2.0')
       include ActiveModelAttributes
     else
       include ActiveModel::Attributes

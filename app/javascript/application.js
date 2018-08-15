@@ -1,6 +1,7 @@
 'use strict';
 
 import 'bulma/css/bulma.css';
+import 'font-awesome/css/font-awesome.min.css';
 import 'pikaday-time/css/pikaday.css';
 import Turbolinks from 'turbolinks';
 import Rails from 'rails-ujs';
