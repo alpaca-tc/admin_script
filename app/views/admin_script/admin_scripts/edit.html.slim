@@ -3,7 +3,7 @@ h1.title
   = yield(:title)
 = simple_format @admin_script.description, { class: 'subtitle' }, wrapper_tag: 'h2'
 - url = AdminScript::Engine.routes.url_helpers.admin_script_path(@admin_script)
-= form_for @admin_script, url: url, as: :admin_script, method: 'patch', class: 'box' do |f|
+= form_with model: @admin_script, url: url, as: :admin_script, method: 'patch', class: 'box' do |f|
   nav.breadcrumb aria-label="breadcrumbs"
     ul
       li
