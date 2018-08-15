@@ -15,6 +15,5 @@ html
       .container.is-widescreen
         - { notice: 'is-success', alert: 'is-warning' }.each do |key, type|
           - if flash[key].present?
-            div class=("notification #{type}")
-              = flash[key]
+            = simple_format(flash[key], class: "notification #{type}")
         = yield
