@@ -12,9 +12,6 @@ module AdminScript
       }
 
       reloader = AdminScript::Reloader.file_watcher.new([], { "#{path}/admin_script" => [:rb] }) do
-        ActiveSupport::DescendantsTracker.clear
-        ActiveSupport::Dependencies.clear
-
         reload_scrpits.call
       end
 
