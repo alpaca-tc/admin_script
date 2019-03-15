@@ -18,9 +18,8 @@ Gem::Specification.new do |spec|
 
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'rails', '>= 5.2.0', '< 6.0.0'
-  spec.add_dependency 'active_model_attributes_backport', '< 1.0.0'
-  spec.add_dependency 'method_source', '>= 0.8.0', '< 0.10.0'
+  spec.add_dependency 'rails', '>= 5.2', '< 6.0.0'
+  spec.add_dependency 'method_source', '>= 0.8.0'
   spec.add_development_dependency 'sqlite3', '~> 1.3', '>= 1.3'
   spec.add_development_dependency 'bundler', '~> 1.13', '>= 1.13'
   spec.add_development_dependency 'rake', '~> 10.0', '>= 10.0'
