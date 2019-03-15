@@ -26,7 +26,6 @@ The AdminScript 1.0.0 is out.
   - `[data-behaviour~=datetimepicker]` and `[data-behaviour~=datepicker]` attributes are ignored. Please use `.js-datepicker` and `.js-datetimepicker` instead of.
 - Ruby dependencies
   - Remove [type_attributes](https://github.com/alpaca-tc/type_attributes)
-  - Add [active_model_attributes_backport](https://github.com/alpaca-tc/active_model_attributes_backport)
   - Please replace `type_attribute()` with `attribute()`
 
 **Improvement**
