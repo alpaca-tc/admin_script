@@ -7,33 +7,6 @@ A module that creates flexible, simple scripts for Rails project.
 
 [preview](https://user-images.githubusercontent.com/1688137/35339470-120b2fdc-0164-11e8-840d-57ec9f55c47f.png)
 
-## How to Upgrade to v1.0.0
-
-The AdminScript 1.0.0 is out.
-
-**Breaking changes**
-
-- CSS framework.
-  - Remove twitter-bootstrap.
-  - Add [bulma](https://bulma.io)
-- JavaScript libraries
-  - Remove `jquery`
-  - Remove `jquery-datetimepicker`
-  - Add `turbolinks`
-  - Add `rails-ujs`
-  - Add `pikaday-time`
-  - Compile javascript/css with webpack.
-  - `[data-behaviour~=datetimepicker]` and `[data-behaviour~=datepicker]` attributes are ignored. Please use `.js-datepicker` and `.js-datetimepicker` instead of.
-- Ruby dependencies
-  - Remove [type_attributes](https://github.com/alpaca-tc/type_attributes)
-  - Please replace `type_attribute()` with `attribute()`
-
-**Improvement**
-
-- Fix broken generators.
-- Fix defined constant warning
-- Add slim template.
-
 ## Why use AdminScript?
 
 Sometimes we add a button to admin panel to run automated script, but I do not want to design RESTful resource and create new template for such scripts.   
