@@ -50,6 +50,10 @@ module AdminScript
       def script
         instance_method(:perform).source
       end
+
+      def url_helpers
+        @@url_helpers ||= Rails.application.routes.url_helpers
+      end
     end
 
     def initialize(*)
@@ -73,7 +77,8 @@ module AdminScript
     private
 
     def url_helpers
-      Rails.application.routes.url_helpers
+      # FIXME: how to cache url_helpers?
+      self.class.url_helpers
     end
   end
 end
