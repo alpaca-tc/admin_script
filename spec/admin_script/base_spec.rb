@@ -2,8 +2,7 @@ require 'spec_helper'
 
 RSpec.describe AdminScript::Base do
   before do
-    # Clear descendants from ActiveSupport::DescendantsTracker
-    ActiveSupport::DescendantsTracker.direct_descendants(described_class).clear
+    allow(described_class).to receive(:subclasses).and_return([inherited])
   end
 
   let!(:inherited) do
@@ -97,7 +96,16 @@ RSpec.describe AdminScript::Base do
       subject { described_class.find_class('inherited') }
 
       it 'finds class by param' do
-        is_expected.to eq(inherited)
+        is_expected.to eq(inherited), -> {
+          %w[
+          ~/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/pry-0.14.1/lib
+          ~/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/coderay-1.1.3/lib
+          ~/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/method_source-1.0.0/lib
+].each { $LOAD_PATH.unshift(File.expand_path(_1)) }
+
+          require 'pry'
+          binding.pry
+        }
       end
     end
 
