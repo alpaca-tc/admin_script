@@ -1,3 +1,5 @@
+**This repo is no longer maintained.**
+
 # AdminScript
 
 [![Gem Version](https://badge.fury.io/rb/admin_script.png)](http://badge.fury.io/rb/admin\_script)
